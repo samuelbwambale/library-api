@@ -54,15 +54,10 @@ public class BookServiceImpl implements BookService {
         bookRepository.delete(existingBook);
     }
 
-//    private Book bookRequestToBookConverter(Book book, BookRequest bookRequest) {
-//        book.setBookNumber(bookRequest.getBookNumber());
-//        book.setAuthor(bookRequest.getAuthor());
-//        book.setTitle(bookRequest.getTitle());
-//        book.setPublication_date(DateUtil.formatDate(bookRequest.getPublication_date()));
-//        book.setAvailable(bookRequest.isAvailable());
-//        return book;
-//    }
-
+    /*
+        @input BookRequest details
+        @returns Book entity object to save to the database
+     */
     private Book bookRequestToBookConverter(BookRequest bookRequest) {
         Book book = new Book();
         BeanUtils.copyProperties(bookRequest,book);
@@ -71,6 +66,10 @@ public class BookServiceImpl implements BookService {
         return book;
     }
 
+    /*
+        @input Book entity
+        @returns BookRequest object
+     */
     private BookRequest getBookRequestFromBook(Book book)
     {
         BookRequest bookRequest = new BookRequest();

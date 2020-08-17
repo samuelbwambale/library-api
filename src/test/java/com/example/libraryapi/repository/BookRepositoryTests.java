@@ -24,7 +24,6 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 public class BookRepositoryTests {
 
     private Book testBook  = new Book();
-    private BookRequest testBookRequest = new BookRequest();
 
     @Autowired
     BookRepository bookRepository;
@@ -37,15 +36,6 @@ public class BookRepositoryTests {
         testBook.setPublication_date(DateUtil.convertStringToDate("08/15/2020"));
         testBook.setAvailable(false);
         bookRepository.save(testBook);
-
-        testBookRequest.setId(1L);
-        testBookRequest.setBookNumber(1234);
-        testBookRequest.setTitle("Java Basics");
-        testBookRequest.setAuthor("John Doe");
-        testBookRequest.setPublication_date("08/15/2020");
-        testBookRequest.setAvailable(false);
-
-
     }
 
     @Test

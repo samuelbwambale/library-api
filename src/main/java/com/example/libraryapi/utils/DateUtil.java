@@ -7,18 +7,24 @@ import java.util.Locale;
 public class DateUtil {
     private static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.SHORT, Locale.US);
 
-
-    // "08/15/2020"
+    /*
+        @input String dateString
+        @returns Date object
+     */
     public static Date convertStringToDate(String dateString) {
         Date date = new Date();
         try {
-            date = DATE_FORMAT.parse(dateString);
+            date = DATE_FORMAT.parse(dateString); // "08/15/2020"
         } catch (Exception e) {
             e.printStackTrace();
         }
         return date;
     }
 
+    /*
+        @input Date object
+        @returns String format of the date
+     */
     public static String convertDateToString(Date date)
     {
         return DATE_FORMAT.format(date);
