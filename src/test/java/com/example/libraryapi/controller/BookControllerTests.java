@@ -52,7 +52,6 @@ public class BookControllerTests {
 //        dto2.setAvailable(true);
 //
 //        List<BookRequest> expectedBooks = Arrays.asList(dto1, dto2);
-//        System.out.println(expectedBooks.size());
 //
 //        when(bookService.listAllBooks()).thenReturn(expectedBooks);
 //

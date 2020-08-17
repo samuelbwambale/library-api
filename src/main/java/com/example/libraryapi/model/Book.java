@@ -32,7 +32,7 @@ public class Book {
     private String author;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.DATE)
     private Date publication_date;
 
     @Column(nullable = false)
