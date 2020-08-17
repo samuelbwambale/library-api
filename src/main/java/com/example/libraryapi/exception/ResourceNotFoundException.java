@@ -1,19 +1,17 @@
 package com.example.libraryapi.exception;
 
-public class ResourceNotFoundException extends Exception {
-    private String message;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    public ResourceNotFoundException(String message)
-    {
-        this.message = message;
-    }
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class ResourceNotFoundException extends RuntimeException {
+    private String message;
 
     @Override
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

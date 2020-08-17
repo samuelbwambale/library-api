@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -23,7 +22,7 @@ public class Book {
     private Long id;
 
     @Column(length = 4, nullable = false)
-    @Size(min = 4, max = 4)
+    @Range(min = 1, max = 9999)
     private Integer bookNumber;
 
     @Column(nullable = false)
@@ -32,9 +31,11 @@ public class Book {
     @Column(nullable = false)
     private String author;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.TIME)
     private Date publication_date;
 
+    @Column(nullable = false)
     private boolean available;
 
 }

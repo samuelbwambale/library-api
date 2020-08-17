@@ -11,5 +11,7 @@ import lombok.ToString;
 @ToString
 public class ErrorInfo {
     private String message;
+    private Integer status;
+
 }
 

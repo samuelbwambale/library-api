@@ -1,8 +1,6 @@
 package com.example.libraryapi.utils;
 
 import java.text.DateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.Locale;
 
@@ -11,7 +9,7 @@ public class DateUtil {
 
 
     // "08/15/2020"
-    public static Date formatDate(String dateString) {
+    public static Date convertStringToDate(String dateString) {
         Date date = new Date();
         try {
             date = DATE_FORMAT.parse(dateString);

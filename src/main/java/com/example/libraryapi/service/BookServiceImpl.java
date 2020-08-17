@@ -1,6 +1,6 @@
 package com.example.libraryapi.service;
 
-import com.example.libraryapi.exception.BusinessException;
+import com.example.libraryapi.exception.ResourceNotFoundException;
 import com.example.libraryapi.model.Book;
 import com.example.libraryapi.repository.BookRepository;
 import com.example.libraryapi.dto.book.BookRequest;
@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookRequest getBookById(Long id) {
         return getBookRequestFromBook(bookRepository.findById(id)
-                .orElseThrow(() -> new BusinessException("Book with id " + id + " not found")));
+                .orElseThrow(() -> new ResourceNotFoundException("Book with id " + id + " not found")));
     }
 
     @Override
@@ -41,6 +41,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookRequest updateBook(Long id, BookRequest bookRequest) {
+        if(!bookRepository.existsById(id)) throw new ResourceNotFoundException("Book with id " + id + " not found");
         bookRequest.setId(id);
         Book book = bookRequestToBookConverter(bookRequest);
         return getBookRequestFromBook(bookRepository.save(book));
@@ -49,7 +50,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void deleteBook(Long id) {
         Book existingBook = bookRepository.findById(id)
-                .orElseThrow(() -> new BusinessException("Book with id " + id + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Book with id " + id + " not found"));
         bookRepository.delete(existingBook);
     }
 
@@ -65,7 +66,7 @@ public class BookServiceImpl implements BookService {
     private Book bookRequestToBookConverter(BookRequest bookRequest) {
         Book book = new Book();
         BeanUtils.copyProperties(bookRequest,book);
-        book.setPublication_date(DateUtil.formatDate(bookRequest.getPublication_date()));
+        book.setPublication_date(DateUtil.convertStringToDate(bookRequest.getPublication_date()));
         book.setAvailable(bookRequest.isAvailable());
         return book;
     }
