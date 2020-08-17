@@ -11,7 +11,6 @@ import org.hibernate.validator.constraints.Range;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,21 +20,22 @@ import java.util.Date;
 public class BookRequest {
     private Long id;
 
-    @NotNull(message = "Book number is requireds")
-//    @Size(min = 4, max = 4)
-    @Range(min = 1, max = 9999)
+    @NotNull(message = "Book number is required")
+    @Range(min = 1, max = 9999, message = "Book number should be a 4-digit number")
     private Integer bookNumber;
 
-    @NotNull
+    @NotNull(message = "Book title is required")
     @Size(min = 2)
     private String title;
 
-    @NotNull
+    @NotNull(message = "Book author is required")
     @Size(min = 2)
     private String author;
 
-    @NotNull
+    @NotNull(message = "Book publication date is required")
+    @NotBlank(message = "Book publication date is required")
     private String publication_date;
 
+    @NotNull(message = "Book availability is required")
     private boolean available;
 }

@@ -1,6 +1,5 @@
 package com.example.libraryapi.controller;
 
-import com.example.libraryapi.model.Book;
 import com.example.libraryapi.service.BookService;
 import com.example.libraryapi.dto.book.BookRequest;
 import org.springframework.beans.factory.annotation.Autowired;

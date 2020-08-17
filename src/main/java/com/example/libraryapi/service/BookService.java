@@ -1,6 +1,5 @@
 package com.example.libraryapi.service;
 
-import com.example.libraryapi.model.Book;
 import com.example.libraryapi.dto.book.BookRequest;
 
 import java.util.List;
